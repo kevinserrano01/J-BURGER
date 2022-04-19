@@ -1,0 +1,93 @@
+@import "boton";
+@import "variables";
+@import "utilidades";
+
+
+*{
+    @include resetear-pm(); //incluimos el mixin para reset que es el margin y el padding 0
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $color-fondo;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a{
+    color: $color-secundario;
+    text-decoration: none;
+}
+
+h2{
+    font-weight: bolder;
+    font-size: size(6); /*6 * 8*/
+}
+
+h3{
+    font-weight: lighter;
+    font-size: size(3); /*hasta la mitad*/
+}
+
+.container{
+    background-color: #ffffff;
+    margin: 100px auto;
+    // height: auto;
+    width: 1250px;
+    padding: 50px;
+    box-shadow: 0 0 20px 2px rgba(0,0,0,0.1);
+
+    background-image: url("../images/stock-photo-black-white-contrast-background-divided.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+// NESTING O ANIDACION_________________________________________________________________
+ul{
+    @include resetear-pm();
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li{
+
+        a{
+            @include boton($backgroud-color:  $color-tercero, 
+                            $color: $color-fondo,
+                            $bold: 'true');
+
+            //BUSCA EL MISMO ESTILO QUE ESTA ARRIBA DE EL Y ESTE LO VA A SUSTITUIR
+            &:hover{
+                @include boton($color-secundario , $color-tercero, 'false'); //llamo a include y le llenamos las propiedades que queremos cuando se active el hover
+                box-shadow: $box-shadow;
+            }
+        }
+    }
+}
+
+
+header{
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+
+.precios{
+    .prev{
+        font-size: size(2);
+        font-weight: bolder;
+        color: $color-fondo;
+        text-decoration: line-through;
+    }
+
+    .now{
+        font-size: size(5);
+        font-weight: bolder;
+    }
+}
+
+

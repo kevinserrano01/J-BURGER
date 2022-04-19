@@ -1,0 +1,63 @@
+// FUNCION PARA DEVOLVER PIXELES_____________________________________________________________
+@function size($valor){
+    @return $valor * $unidad; //regresa un valor
+}
+
+// BLOQUE de estilo DE CODIGO POR LA CUAL PODEMOS SER LLAMADA EN OTRA PROPIEDAD_______________________
+@mixin resetear-pm(){
+    padding: 0;
+    margin: 0; 
+}
+
+
+//3 ESTILOS para nuestras FILAS Y COLUMNAS.
+.row{
+    display: flex;
+    align-items: center;
+
+    .col{
+        width: 50%;
+    }
+
+    .col-30{
+        width: 30%;
+    }
+
+    .col-70{
+        width: 70%;
+    }
+}
+
+
+.m-auto{
+    margin: 0 auto;
+}
+
+//CREAR ESTILOS A TRAVES DE UN CICLO. Es algo como se maneja bootstrap
+//el for itera desde 1 hasta 10 osea que va a crear margenes desde 1 hasta 9
+//lo mismo pasa con el padding
+@for $i from 1 to $limite{
+    //m-1, m-2
+    .m-#{$i}{
+        margin: $i * $unidad;
+    }
+}
+
+@for $i from 1 to $limite{
+    .p-#{$i}{
+        padding: $i * $unidad;
+    }
+}
+
+@for $i from 1 to $limite{
+    .py-#{$i}{
+        padding: $i * $unidad 0;
+    }
+}
+
+//4 ANCHOS
+@for $i from 1 to 4 {
+    .w-#{$i}{
+        width: $i * 25%; //25, 50, Y 75.
+    }
+}

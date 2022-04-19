@@ -1,0 +1,36 @@
+@import "variables";
+
+
+//MIXIN PARA MI BOTON
+@mixin boton($backgroud-color, $color, $bold) {
+    background-color: $backgroud-color;
+    color: $color;
+    border-radius: 50px;
+    padding: 20px 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    //condicion
+    @if ($bold == 'true') {
+        font-weight: bolder;
+    }
+}
+
+//ESTILOS PARA MI BOTON LOGIN
+//uso del & con nesting-----------------------------------------------------
+.btn{
+    &.btn-cta{ //que afecta a todos los botones o.btn el cual que tenga el mismo nivel de btn-cta
+        @include boton($color-primary , $color-secundario, "true");
+        &:hover{ //toma solo el estilo de btn-cta
+            @include boton($color-secundario, $color-tercero, 'true');
+            box-shadow: $box-shadow;
+        }
+    }
+
+    &:hover{ //toma los estilos de todos los botones menos el de login
+        @include boton($color-tercero, $color-secundario, 'true');
+        box-shadow: $box-shadow;
+    }
+}
